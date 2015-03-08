@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.security.MessageDigest;  
 import java.security.NoSuchAlgorithmException;  
 
+import org.rency.utils.exceptions.CoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
   
@@ -94,4 +95,25 @@ public class MD5Utils {
         stringbuffer.append(c0);  
         stringbuffer.append(c1);  
     }  
+    
+    /**
+	 * 
+	* @Title: encryptSHA 
+	* @Description: SHA(Secure Hash Algorithm，安全散列算法,非可逆加密)，数字签名等密码学应用中重要的工具，被广泛地应用于电子商务等信息安全领域。虽然，SHA与MD5通过碰撞法都被破解了， 但是SHA仍然是公认的安全加密算法，较之MD5更为安全。
+	* @Date: 2015年3月8日 下午10:04:05
+	* @param key
+	* @return
+	* @throws CoreException
+	 */
+	public static String encryptSHA(String key) throws CoreException{
+		try {
+			MessageDigest sha = MessageDigest.getInstance("SHA");
+			sha.update(key.getBytes());
+			return  new String(sha.digest());
+		} catch (NoSuchAlgorithmException e) {
+			logger.error("SHA加密异常.",e);
+			e.printStackTrace();
+			throw new CoreException(e);
+		}
+	}
 }  
