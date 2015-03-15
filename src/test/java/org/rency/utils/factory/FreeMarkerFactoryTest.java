@@ -33,7 +33,7 @@ public class FreeMarkerFactoryTest {
 		attrs.add(age);
 		String ftlPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
 		System.out.println(ftlPath);
-		String javaPath = FreeMarkerFactory.generateJavaFile("D:\\workspace\\DPF-Utils\\src\\test\\resources", "bean.ftl", params);
+		String javaPath = FreeMarkerFactory.generateJavaFile("G:\\workspace\\DPF-Utils\\src\\test\\resources", "bean.ftl", params);
 		System.out.println("生成Java文件路径："+javaPath);
 		File javaFile = new File(javaPath);
 		javaFile.delete();
